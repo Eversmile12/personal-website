@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Vittorio Rivabella",
   title: "Engineer / AI Researcher / Speaker",
-  bio: `I work on AI security and developer tooling at the Ethereum Foundation. Before that, I led product at Cyfrin and developer relations at Alchemy, helping make Web3 more secure and accessible. I got into tech through CGI and game engines, and I still care most about building things that make complex technology feel simple. When I'm not writing code, I'm sharing ideas on stage or in writing.`,
+  bio: `I work on AI security and developer tooling at the Ethereum Foundation. Before that, I led product at Cyfrin and developer relations at Alchemy, helping make Web3 more secure and accessible. I got into tech through robotics, CGI, and game engines, and I still care most about building things that make complex technology feel simple. When I'm not writing code, I'm sharing ideas on stage or in writing.`,
   email: "hello@vittoriorivabella.com",
 } as const;
 
