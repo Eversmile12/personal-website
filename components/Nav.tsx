@@ -5,6 +5,7 @@ import { NAV_LINKS } from "@/lib/constants";
 
 export default function Nav() {
   const [visible, setVisible] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -18,6 +19,28 @@ export default function Nav() {
     );
 
     observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) =>
+      document.getElementById(link.href.slice(1))
+    ).filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
@@ -43,7 +66,11 @@ export default function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-mono text-xs tracking-wider text-text-secondary uppercase transition-colors hover:text-text-primary"
+                className={`font-mono text-xs tracking-wider uppercase transition-colors hover:text-text-primary ${
+                  activeSection === link.href
+                    ? "text-text-primary"
+                    : "text-text-secondary"
+                }`}
               >
                 {link.label}
               </a>
