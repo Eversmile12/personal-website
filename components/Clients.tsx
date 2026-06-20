@@ -4,6 +4,7 @@ import { CLIENTS } from "@/lib/constants";
 export default function Clients() {
   const employers = CLIENTS.filter((c) => c.type === "employer");
   const clients = CLIENTS.filter((c) => c.type === "client");
+  const researchPartners = CLIENTS.filter((c) => c.type === "research-partner");
 
   return (
     <SectionWrapper id="clients">
@@ -11,7 +12,7 @@ export default function Clients() {
         Clients &amp; Employers
       </h2>
 
-      <div className="mt-10 grid gap-12 sm:grid-cols-2">
+      <div className="mt-10 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
         {employers.length > 0 && (
           <div>
             <h3 className="font-mono text-xs tracking-wider text-text-muted uppercase">
@@ -32,6 +33,19 @@ export default function Clients() {
             </h3>
             <ul className="mt-4 space-y-0 divide-y divide-border">
               {clients.map((item) => (
+                <ClientItem key={item.name} item={item} />
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {researchPartners.length > 0 && (
+          <div>
+            <h3 className="font-mono text-xs tracking-wider text-text-muted uppercase">
+              Research Partners
+            </h3>
+            <ul className="mt-4 space-y-0 divide-y divide-border">
+              {researchPartners.map((item) => (
                 <ClientItem key={item.name} item={item} />
               ))}
             </ul>

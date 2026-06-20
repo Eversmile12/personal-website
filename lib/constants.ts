@@ -33,7 +33,7 @@ export interface Client {
   role: string;
   period: string;
   url: string;
-  type: "employer" | "client";
+  type: "employer" | "client" | "research-partner";
 }
 
 export const CLIENTS: Client[] = [
@@ -57,6 +57,13 @@ export const CLIENTS: Client[] = [
     period: "",
     url: "https://alchemy.com",
     type: "employer",
+  },
+  {
+    name: "Averta",
+    role: "",
+    period: "",
+    url: "https://averta.io",
+    type: "research-partner",
   },
 ];
 
